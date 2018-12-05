@@ -1,11 +1,14 @@
 import time
 
-def react(data, chars):
+CHARS = list("abcdefghijklmnopqrstuvwxyz")
+
+def react(data):
     done = False
     oldPoly = data
     while done == False:
-        for char in chars:
+        for char in CHARS:
             data = data.replace(char + char.upper(), "").replace(char.upper() + char, "")
+        # If no change, return
         if oldPoly == data:
             done = True
             break
@@ -18,41 +21,37 @@ def part1():
         data = f.read()
 
     data = data.rstrip()
+    data = react(data)
+    print("day 5, part 1: " + str(len(data)))
+    return data
 
-    chars = []
-    for char in data:
-        if char.lower() not in chars:
-            chars.append(char.lower())
+def part2(data = 0):
+    if data == 0:
+        with open("input5.txt") as f:
+            data = f.read()
+        data = data.rstrip()
+        data = react(data)
 
-    dataArr = react(data, chars)
-    print("day 5, part 1: " + str(len(dataArr)))
+    original = str(data)
 
-def part2():
-    with open("input5.txt") as f:
-        data = f.read()
-
-    data = data.rstrip()
-    dataArr = list(data)
-
-    chars = list("qwertyuiopasdfghjklzxcvbnm")
-
-    bestLength = len(dataArr)
+    bestLength = len(data)
     bestChar = 0
-    for char in chars:
-        data2 = data.replace(char, "").replace(char.upper(), "")
-        dataArr = react(data2, chars)
-        length = len(dataArr)
+    for char in CHARS:
+        data = data.replace(char, "").replace(char.upper(), "")
+        data = react(data)
+        length = len(data)
         if length < bestLength:
             bestLength = length
             bestChar = char
+        data = str(original)
 
     print("day 5, part 2: " + str(bestLength))
 
 
 
 def main():
-    part1()
-    part2()
+    dataArr = part1()
+    part2(dataArr)
 
 if __name__ == "__main__":
     main()
