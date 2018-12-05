@@ -14,7 +14,7 @@ For example, `python3 main.py -d 5 -p 1` will run day 1, part 1.
 
 ### To Do
 - ~~Add the ability to run only a certain day~~
-- Maybe speed up some code, current total run time for me is about 2.3 seconds
+- Maybe speed up some code, current total run time for me is about 2.3 seconds (as of day 5)
 
 ### Thanks to
 Micah Waring gave some speedy code to day 1 part 2
