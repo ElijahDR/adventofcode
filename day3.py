@@ -18,13 +18,18 @@ def cleanLine(line):
 
     return newLine
 
-def part1():
+def makeArr(x, y):
     arr = []
-    for i in range(0, 1000):
+    for i in range(0, x):
         secondArr = []
-        for j in range(0, 1000):
+        for j in range(0, y):
             secondArr.append(0)
         arr.append(secondArr)
+
+    return arr
+
+def part1():
+    arr = makeArr(1000, 1000)
 
     lines = 0
     with open("input3.txt") as f:
@@ -45,9 +50,17 @@ def part1():
     print("day 3, part 1: " + str(count))
     return arr
 
-def part2(arr):
+def part2(arr = 0):
     with open("input3.txt") as f:
         lines = f.readlines()
+
+    if arr == 0:
+        arr = makeArr(1000, 1000)
+        for line in lines:
+            line = cleanLine(line)
+            for i in range(line[0], line[0] + line[2]):
+                for j in range(line[1], line[1] + line[3]):
+                    arr[i][j] += 1
 
     for line in lines:
         line = cleanLine(line)
@@ -63,8 +76,6 @@ def part2(arr):
 def main():
     arr = part1()
     part2(arr)
-
-
 
 if __name__ == "__main__":
     main()
