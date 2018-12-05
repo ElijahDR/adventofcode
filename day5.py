@@ -3,7 +3,6 @@ import time
 def react(data, chars):
     done = False
     oldPoly = data
-
     while done == False:
         for char in chars:
             data = data.replace(char + char.upper(), "").replace(char.upper() + char, "")
@@ -15,9 +14,8 @@ def react(data, chars):
     return data
 
 def part1():
-    with open("input5.2.txt") as f:
+    with open("input5.txt") as f:
         data = f.read()
-
 
     data = data.rstrip()
 
@@ -36,18 +34,16 @@ def part2():
     data = data.rstrip()
     dataArr = list(data)
 
-    chars = []
-    for char in dataArr:
-        if char.lower() not in chars:
-            chars.append(char.lower())
+    chars = list("qwertyuiopasdfghjklzxcvbnm")
 
     bestLength = len(dataArr)
     bestChar = 0
     for char in chars:
         data2 = data.replace(char, "").replace(char.upper(), "")
         dataArr = react(data2, chars)
-        if len(dataArr) < bestLength:
-            bestLength = len(dataArr)
+        length = len(dataArr)
+        if length < bestLength:
+            bestLength = length
             bestChar = char
 
     print("day 5, part 2: " + str(bestLength))
