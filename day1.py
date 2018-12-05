@@ -6,26 +6,6 @@ def part1():
 
     print("day 1, part 1: " + str(freq))
 
-# def part2():
-#     # This takes a while, maybe look into faster ways
-#     print("THIS WORKS JUST SLOW")
-#     freq = 0
-#     history = []
-#     done = False
-#     with open("input.txt") as f:
-#         lines = f.readlines()
-#     while done == False:
-#         for line in lines:
-#             freq += int(line)
-#             if freq in history:
-#                 print(freq)
-#                 done = True
-#                 break
-#             history.append(freq)
-#
-#             if done == True:
-#                 break
-
 # Credit goes to Micah Waring
 def part2():
     seen = set()
