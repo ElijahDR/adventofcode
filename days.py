@@ -1,4 +1,4 @@
-import day1, day2, day3, day4, day5
+import day1, day2, day3, day4, day5, day6
 
 def run(day = 0, part = 0):
     if (day == 0):
@@ -44,3 +44,10 @@ def run(day = 0, part = 0):
             day5.part1()
         elif part == 2:
             day5.part2()
+    if (day == 6):
+        if part == 0:
+            day6.main()
+        elif part == 1:
+            day6.part1()
+        elif part == 2:
+            day6.part2()
