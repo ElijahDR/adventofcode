@@ -31,7 +31,7 @@ def part1():
     with open("input6.txt") as f:
         data = f.readlines()
 
-    arrSize = 1000
+    arrSize = 500
     extremes = [arrSize ** 2, arrSize ** 2, 0, 0]
     arr = emptyArr(arrSize, arrSize, arrSize ** 2)
     lineArrs = []
@@ -65,8 +65,6 @@ def part1():
 
         z += 1
 
-    print(extremes)
-
     notInfinite = list(all)
     for i in range(arrSize):
         if arr[0][i] in notInfinite:
@@ -94,15 +92,14 @@ def part1():
             bestCount = count
             bestI = i
 
-    print(bestCount)
-    print(i)
+    print("day 6, part 1:", bestCount)
 
     # print(arr)
 
 def part2():
     with open("input6.txt") as f:
         data = f.readlines()
-    arrSize = 1000
+    arrSize = 500
     lines = []
     for line in data:
         line = cleanLine(line)
@@ -118,7 +115,7 @@ def part2():
             if total < 10000:
                 count += 1
 
-    print(count)
+    print("day 6, part 2:", count)
 
 def main():
     part1()
