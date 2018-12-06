@@ -21,36 +21,32 @@ def emptyArr(x, y, z = 0):
 
     return arr
 
-def getExtremes(data):
-    extremes = [arrSize ** 2, arrSize ** 2, 0, 0]
+def cleanData(data):
+    lines = []
     for line in data:
         line = cleanLine(line)
-        if line[0] < extremes[0]:
-            extremes[0] = line[0]
-        if line[1] < extremes[1]:
-            extremes[1] = line[1]
-        if line[0] > extremes[2]:
-            extremes[2] = line[0]
-        if line[1] > extremes[3]:
-            extremes[3] = line[1]
+        lines.append(line)
+
+    return lines
+
+def getExtremes(data):
+    extremes = [arrSize ** 2, arrSize ** 2, 0, 0]
+    extremes[0] = min(p[0] for p in data)
+    extremes[1] = min(p[1] for p in data)
+    extremes[2] = max(p[0] for p in data)
+    extremes[3] = max(p[1] for p in data)
 
     return extremes
 
-# Credit goes to the internet
-def manhattan_distance(p, q):
-
-    if(len(p) != len(q)):
-       print("Be sure that both vectors are the same dimension!")
-       return
-
-    return sum([abs(p[i]-q[i]) for i in range(len(p))])
+def manhattan_distance(p1, p2):
+    return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 
 def part1():
     startTime = time.time()
     with open("input6.txt") as f:
         data = f.readlines()
 
-    extremes = [arrSize ** 2, arrSize ** 2, 0, 0]
+    extremes = getExtremes(cleanData(data))
     arr = emptyArr(arrSize, arrSize, arrSize ** 2)
     lineArrs = []
     all = []
@@ -69,12 +65,10 @@ def part1():
             extremes[3] = line[1]
         arr[line[0]][line[1]] = 51 + z
         all.append(z)
-        for x in range(0, arrSize):
-            for y in range(0, arrSize):
+        for x in range(extremes[0] - 1, extremes[2] + 1):
+            for y in range(extremes[1] - 1, extremes[3] + 1):
                 bestDist = arrSize ** 2
-                coord = []
-                coord.append(x)
-                coord.append(y)
+                coord = [x, y]
                 diff = manhattan_distance(coord, line)
                 if diff < bestDists[x][y]:
                     arr[x][y] = z
@@ -86,14 +80,14 @@ def part1():
 
     notInfinite = list(all)
     for i in range(arrSize):
-        if arr[0][i] in notInfinite:
-            notInfinite.remove(arr[0][i])
-        if arr[i][0] in notInfinite:
-            notInfinite.remove(arr[i][0])
-        if arr[arrSize - 1][i] in notInfinite:
-            notInfinite.remove(arr[arrSize - 1][i])
-        if arr[i][arrSize - 1] in notInfinite:
-            notInfinite.remove(arr[i][arrSize - 1])
+        if arr[extremes[0]][i] in notInfinite:
+            notInfinite.remove(arr[extremes[0]][i])
+        if arr[i][extremes[1]] in notInfinite:
+            notInfinite.remove(arr[i][extremes[1]])
+        if arr[extremes[2]][i] in notInfinite:
+            notInfinite.remove(arr[extremes[2]][i])
+        if arr[i][extremes[3]] in notInfinite:
+            notInfinite.remove(arr[i][extremes[3]])
 
     bestCount = 0
     bestI = 0
@@ -108,7 +102,6 @@ def part1():
             bestCount = count
             bestI = i
 
-    print("Running took %s seconds" % (time.time() - startTime))
     print("day 6, part 1:", bestCount)
 
     # print(arr)
@@ -118,12 +111,9 @@ def part2(extremes = 0):
     with open("input6.txt") as f:
         data = f.readlines()
 
+    lines = cleanData(data)
     if extremes == 0:
-        extremes = getExtremes(data)
-    lines = []
-    for line in data:
-        line = cleanLine(line)
-        lines.append(line)
+        extremes = getExtremes(lines)
     count  = 0
     arr = emptyArr(arrSize, arrSize, arrSize**2)
     for i in range(extremes[0], extremes[2]):
@@ -135,7 +125,6 @@ def part2(extremes = 0):
             if total < 10000:
                 count += 1
 
-    print("Running took %s seconds" % (time.time() - startTime))
     print("day 6, part 2:", count)
 
 def main():
