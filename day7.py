@@ -1,8 +1,5 @@
-import time
-
 alphabet = list("qwertyuiopasdfghjklzxcvbnm".upper())
 # alphabet = list("abcdef".upper())
-
 
 def cleanLine(line):
     line = line.split()
@@ -44,7 +41,7 @@ def currentlyPossible(req, done):
 
 
 
-def main():
+def run(one = True, two = True):
     # alphabet = list("abcdef".upper())
     with open("input7.txt") as f:
         lines = f.readlines()
@@ -100,10 +97,12 @@ def main():
             done = True
             break
 
-    print("".join(order))
+    if one == True:
+        print("day 7, part 1:", "".join(order))
 
+    if two == False:
+        return
     # workers =  [0, 0, 0, 0, 0]
-    startTime = time.time()
     workers = [0, 0, 0, 0, 0]
     done = []
     doing = []
@@ -127,18 +126,29 @@ def main():
                 i+=1
 
 
-        total += 1
+        timesNoZero = list(times)
+        timesNoZero = list(filter((0).__ne__, timesNoZero))
+        mini = min(timesNoZero)
+        total += mini
         for i in range(len(times)):
             if times[i] > 0:
-                times[i] -= 1
+                times[i] -= mini
             if times[i] == 0:
                 done.append(str(workers[i]))
                 workers[i] = 0
 
-    print(total)
+    print("day 7, part 2:", total)
+
+def part1():
+    run(True, False)
+
+def part2():
+    run(False, True)
 
 
-
+def main():
+    part1()
+    part2()
 
 if __name__ == "__main__":
     import time
