@@ -127,7 +127,7 @@ def run(one = True, two = True):
 
 
         timesNoZero = list(times)
-        timesNoZero = list(filter((0).__ne__, timesNoZero))
+        timesNoZero = list(filter(lambda a: a != 0, timesNoZero))
         mini = min(timesNoZero)
         total += mini
         for i in range(len(times)):
