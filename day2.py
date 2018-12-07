@@ -18,6 +18,7 @@ def part1():
                 if count == 3 and added3 == False:
                     added3 = True
                     threes += 1
+
     print("day 2, part 1: " + str(twos * threes))
 
 
