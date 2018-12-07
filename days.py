@@ -7,6 +7,8 @@ def run(day = 0, part = 0):
         day3.main()
         day4.main()
         day5.main()
+        day6.main()
+        day7.main()
     if (day == 1):
         if part == 0:
             day1.main()
