@@ -1,7 +1,7 @@
 def part1():
     twos = 0
     threes = 0
-    with open("input2.txt") as f:
+    with open("input/input2.txt") as f:
         for line in f:
             added2 = False
             added3 = False
@@ -24,7 +24,7 @@ def part1():
 
 
 def part2():
-    with open("input2.txt") as f:
+    with open("input/input2.txt") as f:
         lines = f.readlines()
         best = 0
         bestX = 0

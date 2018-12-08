@@ -17,7 +17,7 @@ def react(data):
     return data
 
 def part1():
-    with open("input5.txt") as f:
+    with open("input/input5.txt") as f:
         data = f.read()
 
     data = data.rstrip()
@@ -27,7 +27,7 @@ def part1():
 
 def part2(data = 0):
     if data == 0:
-        with open("input5.txt") as f:
+        with open("input/input5.txt") as f:
             data = f.read()
         data = data.rstrip()
         data = react(data)

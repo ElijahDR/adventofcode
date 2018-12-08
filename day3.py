@@ -32,7 +32,7 @@ def part1():
     arr = makeArr(1000, 1000)
 
     lines = 0
-    with open("input3.txt") as f:
+    with open("input/input3.txt") as f:
         lines = f.readlines()
 
     for line in lines:
@@ -51,7 +51,7 @@ def part1():
     return arr
 
 def part2(arr = 0):
-    with open("input3.txt") as f:
+    with open("input/input3.txt") as f:
         lines = f.readlines()
 
     if arr == 0:

@@ -32,15 +32,15 @@ def getDataValue(line):
 
     return total
 
-def part1and2():
+def part1and2(one = True, two = True):
     lineInfo = []
     data = {}
     values = []
     lines = 0
-    with open("input4.txt") as f:
+    with open("input/input4.txt") as f:
         lines = f.readlines()
 
-    newF = open("ordered4.txt", "w+")
+    newF = open("input/ordered4.txt", "w+")
     for i in range(0, len(lines)):
         line = cleanLine(lines[i])
         value = getDataValue(line)
@@ -60,7 +60,7 @@ def part1and2():
 
     newF.close()
 
-    newF = open("ordered4.txt")
+    newF = open("input/ordered4.txt")
     linesN = newF.readlines()
     currentID = 0
     timeAsleep = {}
@@ -110,22 +110,31 @@ def part1and2():
             mostCommon = item
             mostCount = minutes[bestIndex].count(item)
 
-    print("day 4, part 1: " + str(int(mostCommon) * int(IDs[bestIndex])))
+    if one == True:
+        print("day 4, part 1: " + str(int(mostCommon) * int(IDs[bestIndex])))
 
-    mostCommon = 0
-    mostCount = 0
-    mostID = 0
-    for i in range(0, len(minutes)):
-        for item in minutes[i]:
-            if minutes[i].count(item) > mostCount:
-                mostCount = minutes[i].count(item)
-                mostCommon = item
-                mostID = i
+    if two == True:
 
-    print("day 4, part 2: " + str(int(IDs[mostID]) * int(mostCommon)))
+        mostCommon = 0
+        mostCount = 0
+        mostID = 0
+        for i in range(0, len(minutes)):
+            for item in minutes[i]:
+                if minutes[i].count(item) > mostCount:
+                    mostCount = minutes[i].count(item)
+                    mostCommon = item
+                    mostID = i
 
-def main():
-    part1and2()
+        print("day 4, part 2: " + str(int(IDs[mostID]) * int(mostCommon)))
+
+def main(one = True, two = True):
+    part1and2(one, two)
+
+def part1():
+    part1and2(True, False)
+
+def part2():
+    part1and2(False, True)
 
 if __name__ == "__main__":
     main()

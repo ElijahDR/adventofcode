@@ -1,7 +1,4 @@
-import time
-
 arrSize = 500
-
 def cleanLine(line):
     line = line.rstrip()
     line = line.split(", ")
@@ -42,8 +39,7 @@ def manhattan_distance(p1, p2):
     return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 
 def part1():
-    startTime = time.time()
-    with open("input6.txt") as f:
+    with open("input/input6.txt") as f:
         data = f.readlines()
 
     extremes = getExtremes(cleanData(data))
@@ -107,8 +103,7 @@ def part1():
     # print(arr)
 
 def part2(extremes = 0):
-    startTime = time.time()
-    with open("input6.txt") as f:
+    with open("input/input6.txt") as f:
         data = f.readlines()
 
     lines = cleanData(data)

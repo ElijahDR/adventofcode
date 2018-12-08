@@ -43,7 +43,7 @@ def currentlyPossible(req, done):
 
 def run(one = True, two = True):
     # alphabet = list("abcdef".upper())
-    with open("input7.txt") as f:
+    with open("input/input7.txt") as f:
         lines = f.readlines()
 
     requirements = {}
@@ -70,7 +70,7 @@ def run(one = True, two = True):
             else:
                 okay = True
                 for thing in needed:
-                    if thing not in order or item in order:
+                    if thing not in order:
                         okay = False
 
                 if okay == True:
@@ -82,12 +82,6 @@ def run(one = True, two = True):
             if item in order:
                 possible = list(filter((item).__ne__, possible))
                 continue
-            else:
-                if len(requirements[item]) == bestLength:
-                    newPos[1] = item
-                if len(requirements[item]) < bestLength:
-                    newPos = [0, 1]
-                    newPos[0] = item
 
         possible.sort()
         order.append(possible[0])
@@ -151,5 +145,4 @@ def main():
     part2()
 
 if __name__ == "__main__":
-    import time
     main()

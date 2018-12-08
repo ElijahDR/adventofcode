@@ -1,6 +1,6 @@
 def part1():
     freq = 0
-    with open("input1.txt") as f:
+    with open("input/input1.txt") as f:
         for line in f:
             freq += int(line)
 
@@ -9,7 +9,7 @@ def part1():
 # Credit goes to Micah Waring
 def part2():
     seen = set()
-    with open("input1.txt", "r") as f:
+    with open("input/input1.txt", "r") as f:
         data = f.read().split("\n")
     freqs = []
     for i in range(0, len(data)):
