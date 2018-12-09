@@ -26,7 +26,6 @@ def part2():
                 done = True
                 break
 
-
 def main():
     part1()
     part2()

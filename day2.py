@@ -21,8 +21,6 @@ def part1():
 
     print("day 2, part 1: " + str(twos * threes))
 
-
-
 def part2():
     with open("input/input2.txt") as f:
         lines = f.readlines()

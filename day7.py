@@ -39,8 +39,6 @@ def currentlyPossible(req, done):
 
     return possible
 
-
-
 def run(one = True, two = True):
     # alphabet = list("abcdef".upper())
     with open("input/input7.txt") as f:
@@ -137,7 +135,6 @@ def part1():
 
 def part2():
     run(False, True)
-
 
 def main():
     part1()
