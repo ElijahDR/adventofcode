@@ -16,7 +16,7 @@ class Marble:
         else:
             current = self
             for i in range(0, 7):
-                current = current.prev
+                current = current.previous
 
             current.next.previous = current.previous
             current.previous.next = current.next
@@ -30,9 +30,29 @@ def createArr(x, y = 0):
 
     return arr
 
+def part1():
+    with open("input/input9.txt") as f:
+        data = f.read().split()
 
+    playersN = int(data[0])
+    last = int(data[6]) * 100
 
-def main():
+    marble = Marble(0)
+    players = createArr(playersN)
+    current = 0
+    for i in range(1, last):
+        marble, score = marble.play(Marble(i))
+        players[current] += score
+        current += 1
+        if current == playersN:
+            current = 0
+
+        if marble.val == last:
+            break
+
+    print("day 9, part 1:", max(players))
+
+def part2():
     with open("input/input9.txt") as f:
         data = f.read().split()
 
@@ -52,8 +72,11 @@ def main():
         if marble.val == last:
             break
 
-    print(max(players))
+    print("day 9, part 2:", max(players))
 
+def main():
+    part1()
+    part2()
 
 
 

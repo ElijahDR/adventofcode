@@ -6,7 +6,6 @@ def run(day = 0, part = 0):
     if (day == 0):
         for d in days:
             d.main()
-
     else:
         day = days[day - 1]
         if part == 0:
