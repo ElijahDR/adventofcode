@@ -119,7 +119,6 @@ def run(one = True, two = True):
 
                 i+=1
 
-
         timesNoZero = list(times)
         timesNoZero = list(filter(lambda a: a != 0, timesNoZero))
         mini = min(timesNoZero)
