@@ -47,8 +47,6 @@ def part2(data = 0):
 
     print("day 5, part 2: " + str(bestLength))
 
-
-
 def main():
     dataArr = part1()
     part2(dataArr)
