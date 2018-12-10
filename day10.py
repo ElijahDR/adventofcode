@@ -22,14 +22,25 @@ def getExtremes(data):
 
     extremes[4] = extremes[2] - extremes[0]
     extremes[5] = extremes[3] - extremes[1]
+    
     return extremes
 
+def show(draw, extremes):
+    maxR = max([extremes[4], extremes[5]])
+    arr = createArray(extremes[5] + 1,extremes[4] + 1, ".")
+    for item in draw:
+        arrX = int(item[0] - extremes[2] + extremes[4])
+        arrY = int(item[1] - extremes[3] + extremes[5])
+        arr[arrY][arrX] = "#"
 
-def main():
+    for line in arr:
+        print("".join(line))
+
+
+def main(one = True, two = True):
     with open("input/input10.txt") as f:
         lines = f.readlines()
 
-    arr = createArray(100, 100, ".")
     data = []
     for line in lines:
         line = cleanLine(line)
@@ -37,40 +48,45 @@ def main():
         lineData = list(map(int, lineArr))
         data.append(lineData)
 
-
-
-
     done = False
-    second = 0
+    second = 5000
     best = []
     bestRanges = arrSize
     bestSecond = 0
+    bestDraw = []
+    bestExtremes = []
     while done == False:
         draw = []
-        arr = createArray(arrSize, arrSize, ".")
         for item in data:
             drawX = int(item[0] + (arrSize / 2) + (second * item[2]))
             drawY = int(item[1] + (arrSize / 2) + (second * item[3]))
-            arr[drawX][drawY] = "#"
             draw.append([drawX, drawY])
 
         extremes = getExtremes(draw)
         avg = (extremes[4] + extremes[5]) / 2
+
         if avg < bestRanges:
+            bestDraw = draw
+            bestExtremes = extremes
             bestRanges = avg
             bestSecond = second
 
-
-        # for line in arr:
-        #     print("".join(line))
-
         second += 1
-        print(second)
-        if second == 30:
+        if second == 15000:
             done = True
             continue
 
-    print(bestSecond)
+    if one == True:
+        print("day 10, part 1 (required reading):")
+        show(bestDraw, bestExtremes)
+    if two == True:
+        print("day 10, part 2:", bestSecond)
+
+def part1():
+    main(True, False)
+
+def part2():
+    main(False, True)
 
 if __name__ == "__main__":
     main()

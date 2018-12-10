@@ -35,7 +35,7 @@ def part1():
         data = f.read().split()
 
     playersN = int(data[0])
-    last = int(data[6]) * 100
+    last = int(data[6])
 
     marble = Marble(0)
     players = createArr(playersN)
@@ -56,8 +56,8 @@ def part2():
     with open("input/input9.txt") as f:
         data = f.read().split()
 
-    playersN = int(data[0])
-    last = int(data[6])
+    playersN = int(data[0]) 
+    last = int(data[6]) * 100
 
     marble = Marble(0)
     players = createArr(playersN)
