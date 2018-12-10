@@ -33,7 +33,6 @@ def part2(data = 0):
         data = react(data)
 
     original = str(data)
-
     bestLength = len(data)
     bestChar = 0
     for char in CHARS:
