@@ -17,6 +17,8 @@ For example, `python3 main.py -d 5 -p 1` will run day 5, part 1.
 - ~~Maybe speed up some code, current total run time for me is about 2.3 seconds (as of day 5)~~
 - ~~Still could be sped up, current total run time is 1.4 seconds~~
 - Part 1 to 5 are quick, part 6 has just been done and takes ~~46.2 seconds~~ ~~37.7~~ 7.5 seconds.
+- Speed isn't going to work out, day 9 part 2 takes about 30 seconds.
+- Day 10 part 1 is currently printed out as ASCII art, OCR?
 
 ### Thanks to
 Micah Waring gave some speedy code to day 1 part 2
