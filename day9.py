@@ -30,8 +30,8 @@ def createArr(x, y = 0):
 
     return arr
 
-def part1():
-    with open("input/input9.txt") as f:
+def part1(inputData = "input.input9.txt"):
+    with open(inputData) as f:
         data = f.read().split()
 
     playersN = int(data[0])
@@ -52,11 +52,11 @@ def part1():
 
     print("day 9, part 1:", max(players))
 
-def part2():
-    with open("input/input9.txt") as f:
+def part2(inputData = "input/input9.txt"):
+    with open(inputData) as f:
         data = f.read().split()
 
-    playersN = int(data[0]) 
+    playersN = int(data[0])
     last = int(data[6]) * 100
 
     marble = Marble(0)
@@ -74,9 +74,9 @@ def part2():
 
     print("day 9, part 2:", max(players))
 
-def main():
-    part1()
-    part2()
+def main(inputData = "input/input9.txt"):
+    part1(inputData)
+    part2(inputData)
 
 
 

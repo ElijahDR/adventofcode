@@ -28,11 +28,11 @@ def makeArr(x, y):
 
     return arr
 
-def part1():
+def part1(inputData = "input/input3.txt"):
     arr = makeArr(1000, 1000)
 
     lines = 0
-    with open("input/input3.txt") as f:
+    with open(inputData) as f:
         lines = f.readlines()
 
     for line in lines:
@@ -50,8 +50,8 @@ def part1():
     print("day 3, part 1: " + str(count))
     return arr
 
-def part2(arr = 0):
-    with open("input/input3.txt") as f:
+def part2(inputData = "input/input3.txt", arr = 0):
+    with open(inputData) as f:
         lines = f.readlines()
 
     if arr == 0:
@@ -73,9 +73,9 @@ def part2(arr = 0):
         if okay == True:
             print("day 3, part 2: " + str(line[4]))
 
-def main():
-    arr = part1()
-    part2(arr)
+def main(inputData = "input/input3.txt"):
+    arr = part1(inputData)
+    part2(inputData, arr)
 
 if __name__ == "__main__":
     main()

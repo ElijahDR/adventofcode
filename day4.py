@@ -32,12 +32,12 @@ def getDataValue(line):
 
     return total
 
-def part1and2(one = True, two = True):
+def part1and2(one = True, two = True, inputData = "input/input4.txt"):
     lineInfo = []
     data = {}
     values = []
     lines = 0
-    with open("input/input4.txt") as f:
+    with open(inputData) as f:
         lines = f.readlines()
 
     newF = open("input/ordered4.txt", "w+")
@@ -127,14 +127,14 @@ def part1and2(one = True, two = True):
 
         print("day 4, part 2: " + str(int(IDs[mostID]) * int(mostCommon)))
 
-def main(one = True, two = True):
-    part1and2(one, two)
+def main(inputData = "input/input4.txt"):
+    part1and2(True, True, inputData)
 
-def part1():
-    part1and2(True, False)
+def part1(inputData = "input/input4.txt"):
+    part1and2(True, False, inputData)
 
-def part2():
-    part1and2(False, True)
+def part2(inputData = "input/input4.txt"):
+    part1and2(False, True, inputData)
 
 if __name__ == "__main__":
     main()

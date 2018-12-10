@@ -1,15 +1,15 @@
-def part1():
+def part1(inputData = "input/input1.txt"):
     freq = 0
-    with open("input/input1.txt") as f:
+    with open(inputData) as f:
         for line in f:
             freq += int(line)
 
     print("day 1, part 1: " + str(freq))
 
 # Credit goes to Micah Waring
-def part2():
+def part2(inputData = "input/input1.txt"):
     seen = set()
-    with open("input/input1.txt", "r") as f:
+    with open(inputData, "r") as f:
         data = f.read().split("\n")
     freqs = []
     for i in range(0, len(data)):
@@ -26,9 +26,9 @@ def part2():
                 done = True
                 break
 
-def main():
-    part1()
-    part2()
+def main(inputData = "input/input1.txt"):
+    part1(inputData)
+    part2(inputData)
 
 if __name__ == "__main__":
     main()

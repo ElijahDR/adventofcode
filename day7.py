@@ -39,9 +39,9 @@ def currentlyPossible(req, done):
 
     return possible
 
-def run(one = True, two = True):
+def run(one = True, two = True, inputData = "input/input7.txt"):
     # alphabet = list("abcdef".upper())
-    with open("input/input7.txt") as f:
+    with open(inputData) as f:
         lines = f.readlines()
 
     requirements = {}
@@ -130,15 +130,15 @@ def run(one = True, two = True):
 
     print("day 7, part 2:", total)
 
-def part1():
-    run(True, False)
+def part1(inputData = "input/input7.txt"):
+    run(True, False, inputData)
 
-def part2():
-    run(False, True)
+def part2(inputData = "input/input7.txt"):
+    run(False, True, inputData)
 
-def main():
-    part1()
-    part2()
+def main(inputData = "input/input7.txt"):
+    part1(inputData)
+    part2(inputData)
 
 if __name__ == "__main__":
     main()

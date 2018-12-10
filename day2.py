@@ -1,7 +1,7 @@
-def part1():
+def part1(inputData = "input/input2.txt"):
     twos = 0
     threes = 0
-    with open("input/input2.txt") as f:
+    with open(inputData) as f:
         for line in f:
             added2 = False
             added3 = False
@@ -21,8 +21,8 @@ def part1():
 
     print("day 2, part 1: " + str(twos * threes))
 
-def part2():
-    with open("input/input2.txt") as f:
+def part2(inputData = "input/input2.txt"):
+    with open(inputData) as f:
         lines = f.readlines()
         best = 0
         bestX = 0
@@ -59,9 +59,9 @@ def part2():
 
         print("day 2, part 2: " + "".join(new).rstrip())
 
-def main():
-    part1()
-    part2()
+def main(inputData = "input/input2.txt"):
+    part1(inputData)
+    part2(inputData)
 
 if __name__ == "__main__":
     main()

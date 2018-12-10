@@ -1,5 +1,5 @@
-def main():
-    with open("input/input8.txt") as f:
+def main(inputData = "input/input8.txt"):
+    with open(inputData) as f:
         data = f.read()
         data = data.split()
 
@@ -10,7 +10,25 @@ def main():
     _, answer = solve1(data)
     print("day 8, part 1:", answer)
     _, answer = solve2(data)
+    print("day 8, part 2:", answer)
+
+def part1(inputData = "input/input8.txt"):
+    with open(inputData) as f:
+        data = f.read()
+        data = data.split()
+
+    data = list(map(int, data))
+    _, answer = solve1(data)
     print("day 8, part 1:", answer)
+
+def part2(inputData = "input/input8.txt"):
+    with open(inputData) as f:
+        data = f.read()
+        data = data.split()
+
+    data = list(map(int, data))
+    _, answer = solve2(data)
+    print("day 8, part 2:", answer)
 
 def solve1(data, current = 0):
     childrenN = data[current]

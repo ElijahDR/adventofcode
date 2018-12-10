@@ -38,8 +38,8 @@ def getExtremes(data):
 def manhattan_distance(p1, p2):
     return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 
-def part1():
-    with open("input/input6.txt") as f:
+def part1(inputData = "input/input6.txt"):
+    with open(inputData) as f:
         data = f.readlines()
 
     extremes = getExtremes(cleanData(data))
@@ -100,10 +100,12 @@ def part1():
 
     print("day 6, part 1:", bestCount)
 
+    return extremes
+
     # print(arr)
 
-def part2(extremes = 0):
-    with open("input/input6.txt") as f:
+def part2(inputData = "input/input6.txt", extremes = 0):
+    with open(inputData) as f:
         data = f.readlines()
 
     lines = cleanData(data)
@@ -122,9 +124,9 @@ def part2(extremes = 0):
 
     print("day 6, part 2:", count)
 
-def main():
-    part1()
-    part2()
+def main(inputData = "input/input6.txt"):
+    extremes = part1(inputData)
+    part2(inputData, extremes)
 
 if __name__ == "__main__":
     main()

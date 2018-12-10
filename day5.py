@@ -16,8 +16,8 @@ def react(data):
 
     return data
 
-def part1():
-    with open("input/input5.txt") as f:
+def part1(inputData = "input/input5.txt"):
+    with open(inputData) as f:
         data = f.read()
 
     data = data.rstrip()
@@ -25,9 +25,9 @@ def part1():
     print("day 5, part 1: " + str(len(data)))
     return data
 
-def part2(data = 0):
+def part2(inputData = "input/input5.txt", data = 0):
     if data == 0:
-        with open("input/input5.txt") as f:
+        with open(inputData) as f:
             data = f.read()
         data = data.rstrip()
         data = react(data)
@@ -46,9 +46,9 @@ def part2(data = 0):
 
     print("day 5, part 2: " + str(bestLength))
 
-def main():
-    dataArr = part1()
-    part2(dataArr)
+def main(inputData = "input/input5.txt"):
+    dataArr = part1(inputData)
+    part2(inputData, dataArr)
 
 if __name__ == "__main__":
     main()

@@ -22,12 +22,11 @@ def getExtremes(data):
 
     extremes[4] = extremes[2] - extremes[0]
     extremes[5] = extremes[3] - extremes[1]
-    
+
     return extremes
 
 def show(draw, extremes):
-    maxR = max([extremes[4], extremes[5]])
-    arr = createArray(extremes[5] + 1,extremes[4] + 1, ".")
+    arr = createArray(extremes[5] + 1, extremes[4] + 1, ".")
     for item in draw:
         arrX = int(item[0] - extremes[2] + extremes[4])
         arrY = int(item[1] - extremes[3] + extremes[5])
@@ -37,8 +36,8 @@ def show(draw, extremes):
         print("".join(line))
 
 
-def main(one = True, two = True):
-    with open("input/input10.txt") as f:
+def run(one = True, two = True, inputData = "input/input10.txt"):
+    with open(inputData) as f:
         lines = f.readlines()
 
     data = []
@@ -49,20 +48,31 @@ def main(one = True, two = True):
         data.append(lineData)
 
     done = False
-    second = 5000
+    second = 8000
     best = []
     bestRanges = arrSize
     bestSecond = 0
     bestDraw = []
     bestExtremes = []
     while done == False:
+        extremes = [arrSize, arrSize, 0, 0, 0, 0]
         draw = []
         for item in data:
             drawX = int(item[0] + (arrSize / 2) + (second * item[2]))
             drawY = int(item[1] + (arrSize / 2) + (second * item[3]))
             draw.append([drawX, drawY])
+            if drawX < extremes[0]:
+                extremes[0] = drawX
+            if drawY < extremes[1]:
+                extremes[1] = drawY
+            if drawX > extremes[2]:
+                extremes[2] = drawX
+            if drawY > extremes[3]:
+                extremes[3] = drawY
 
-        extremes = getExtremes(draw)
+        extremes[4] = extremes[2] - extremes[0]
+        extremes[5] = extremes[3] - extremes[1]
+
         avg = (extremes[4] + extremes[5]) / 2
 
         if avg < bestRanges:
@@ -82,11 +92,14 @@ def main(one = True, two = True):
     if two == True:
         print("day 10, part 2:", bestSecond)
 
-def part1():
-    main(True, False)
+def main(inputData = "input/input10.txt"):
+    run(True, True, inputData)
 
-def part2():
-    main(False, True)
+def part1(inputData = "input/input10.txt"):
+    main(True, False, inputData)
+
+def part2(inputData = "input/input10.txt"):
+    main(False, True, inputData)
 
 if __name__ == "__main__":
     main()
