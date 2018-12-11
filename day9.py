@@ -8,10 +8,10 @@ class Marble:
         if marble.val % 23 != 0:
             one = self.next
             two = self.next.next
-            marble.next = two
-            marble.previous = one
             one.next = marble
             two.previous = marble
+            marble.next = two
+            marble.previous = one
             return marble, 0
         else:
             current = self
@@ -30,7 +30,7 @@ def createArr(x, y = 0):
 
     return arr
 
-def part1(inputData = "input.input9.txt"):
+def part1(inputData = "input/input9.txt"):
     with open(inputData) as f:
         data = f.read().split()
 

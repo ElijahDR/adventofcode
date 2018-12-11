@@ -27,13 +27,33 @@ def main():
         lines = f.readlines()
 
     serial = int(data)
-    print(serial)
+    serial = 3999
     arr = createArr(300, 300)
     # print(getPower(101, 153, 71))
     for x in range(300):
         for y in range(300):
             power = getPower(x + 1, y + 1, serial)
             arr[x][y] = power
+
+    bestSum = 0
+    bestX = 0
+    bestY = 0
+    bestSize = 0
+    history = 0
+    oldX = 0
+    oldY = 0
+    done = False
+    for x in range(297):
+        for y in range(297):
+            sum = power_sum(arr, x, y)
+
+            if sum > bestSum:
+                history = 0
+                bestSum = sum
+                bestX = x + 1
+                bestY = y + 1
+
+    print(bestX, bestY)
 
     bestSum = 0
     bestX = 0
@@ -64,10 +84,7 @@ def main():
                     break
 
 
-    print(bestSum)
-    print(bestX)
-    print(bestY)
-    print(bestSize)
+    print(bestX, bestY, bestSize)
 
 if __name__ == "__main__":
     main()

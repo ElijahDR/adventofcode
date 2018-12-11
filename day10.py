@@ -48,7 +48,7 @@ def run(one = True, two = True, inputData = "input/input10.txt"):
         data.append(lineData)
 
     done = False
-    second = 8000
+    second = 10000
     best = []
     bestRanges = arrSize
     bestSecond = 0
@@ -82,7 +82,7 @@ def run(one = True, two = True, inputData = "input/input10.txt"):
             bestSecond = second
 
         second += 1
-        if second == 15000:
+        if second == 12000:
             done = True
             continue
 
